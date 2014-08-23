@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
   validates :name, presence: true, length: {maximum: 50}
   before_create :create_remember_token
   before_save {self.email = email.downcase}
